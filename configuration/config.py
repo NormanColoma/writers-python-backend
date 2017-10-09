@@ -1,3 +1,6 @@
+import os
+
+
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -5,7 +8,7 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    DATABASE_URI = 'mongodb://localhost:27017/'
+    DATABASE_URI = 'mongodb://' + os.getenv('DATABASE') + ':27017'
 
 
 class DevelopmentConfig(Config):

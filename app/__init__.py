@@ -1,7 +1,7 @@
 from flask import Flask, g
 from pymongo import MongoClient
 
-from config.config import app_config
+from configuration.config import app_config
 from routes.books import books_api
 
 
