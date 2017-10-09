@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 
 from dao.BookDAO import BookDAO
-from BookJSONMapper import BookMapper
+from routes.BookJSONMapper import BookMapper
 
 books_api = Blueprint('books', __name__)
 
