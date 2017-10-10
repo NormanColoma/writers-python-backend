@@ -3,7 +3,7 @@ from abc import abstractmethod
 from models import Book
 
 
-class BookRepository:
+class IBookRepository:
     @abstractmethod
     def get_books(self): raise NotImplementedError
 

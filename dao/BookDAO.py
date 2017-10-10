@@ -1,12 +1,12 @@
 from bson import ObjectId
 from flask import current_app
 
-from dao.BookRepository import BookRepository
+from dao.IBookRepository import IBookRepository
 from models import Book
 from models.mappers.BookMapper import BookMapper
 
 
-class BookDAO(BookRepository):
+class BookDAO(IBookRepository):
     def __init__(self):
         self.config = current_app.config.get('db')
         self.book_collection = self.config.writers.book
