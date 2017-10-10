@@ -1,3 +1,5 @@
+from typing import Union
+
 from flask import json, Response
 from flask.json import JSONEncoder, jsonify, JSONDecoder
 
@@ -5,7 +7,7 @@ from models.Book import Book
 
 
 class BookMapper(JSONEncoder, JSONDecoder):
-    def default(self, o):
+    def default(self, o: Book):
         try:
             if isinstance(o, Book):
                 return {"id": o.id, "name": o.name, "description": o.description}
@@ -13,14 +15,14 @@ class BookMapper(JSONEncoder, JSONDecoder):
             pass
         return JSONEncoder.default(self, o)
 
-    def to_object(self, json_obj):
+    def to_object(self, json_obj: dict):
         book = Book()
 
         book.name = json_obj['name']
         book.description = json_obj['description']
         return book
 
-    def to_json(self, book):
+    def to_json(self, book: Union[list, Book]):
         if isinstance(book, list):
             return Response(json.dumps(book, cls=BookMapper), mimetype='application/json')
         json_book = self.default(book)

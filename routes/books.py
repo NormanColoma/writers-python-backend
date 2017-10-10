@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, Response
 
 from dao.BookDAO import BookDAO
 from routes.BookJSONMapper import BookMapper
@@ -16,7 +16,7 @@ def get_books():
 
 
 @books_api.route('/books/<book_id>')
-def search_book(book_id):
+def search_book(book_id: str):
     dao = BookDAO()
     book = dao.get_book(book_id)
     json_mapper = BookMapper()
@@ -33,3 +33,10 @@ def add_book():
     response = json_mapper.to_json(created_book)
     response.status_code = 201
     return response
+
+
+@books_api.route('/books/<book_id>', methods=['DELETE'])
+def remove_book(book_id: str):
+    dao = BookDAO()
+    dao.remove_book(book_id)
+    return Response(status=204)

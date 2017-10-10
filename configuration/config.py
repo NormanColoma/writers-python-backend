@@ -8,7 +8,7 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    DATABASE_URI = 'mongodb://' + os.getenv('DATABASE') + ':27017'
+    DATABASE_URI = 'mongodb://' + os.getenv('DATABASE') if os.getenv('DATABASE') is not None else 'localhost' + ':27017'
 
 
 class DevelopmentConfig(Config):

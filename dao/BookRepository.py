@@ -1,12 +1,17 @@
 from abc import abstractmethod
 
+from models import Book
+
 
 class BookRepository:
     @abstractmethod
     def get_books(self): raise NotImplementedError
 
     @abstractmethod
-    def get_book(self, book_id): raise NotImplementedError
+    def get_book(self, book_id: str): raise NotImplementedError
 
     @abstractmethod
-    def save_book(self, book): raise NotImplementedError
+    def save_book(self, book: Book): raise NotImplementedError
+
+    @abstractmethod
+    def remove_book(self, book_id: str): raise NotImplementedError

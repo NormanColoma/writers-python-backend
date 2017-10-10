@@ -4,7 +4,7 @@ from models.Book import Book
 class BookMapper:
 
     @staticmethod
-    def map_to_model(entity):
+    def map_to_model(entity: dict):
         model = Book()
         model.id = str(entity['_id'])
         model.name = entity['name']
@@ -12,5 +12,5 @@ class BookMapper:
         return model
 
     @staticmethod
-    def map_to_entity(model):
+    def map_to_entity(model: Book):
         return {'name': model.name, 'description': model.description}

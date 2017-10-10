@@ -1,7 +1,7 @@
 class Book:
-    id = ""
-    name = ""
-    description = ""
+    id: str = ""
+    name: str = ""
+    description: str = ""
 
     def __init__(self):
         pass
