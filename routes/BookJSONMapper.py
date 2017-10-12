@@ -10,7 +10,7 @@ class BookMapper(JSONEncoder, JSONDecoder):
     def default(self, o: Book):
         try:
             if isinstance(o, Book):
-                return {"id": o.id, "name": o.name, "description": o.description}
+                return {"id": o.id, "title": o.title, "description": o.description, "coverUrl": o.cover_url}
         except TypeError:
             pass
         return JSONEncoder.default(self, o)
@@ -18,8 +18,9 @@ class BookMapper(JSONEncoder, JSONDecoder):
     def to_object(self, json_obj: dict):
         book = Book()
 
-        book.name = json_obj['name']
+        book.title = json_obj['title']
         book.description = json_obj['description']
+        book.cover_url = json_obj['coverUrl']
         return book
 
     def to_json(self, book: Union[list, Book]):

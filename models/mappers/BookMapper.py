@@ -7,10 +7,11 @@ class BookMapper:
     def map_to_model(entity: dict):
         model = Book()
         model.id = str(entity['_id'])
-        model.name = entity['name']
+        model.title = entity['title']
         model.description = entity['description']
+        model.cover_url = entity['coverUrl']
         return model
 
     @staticmethod
     def map_to_entity(model: Book):
-        return {'name': model.name, 'description': model.description}
+        return {'title': model.title, 'description': model.description, 'coverUrl': model.cover_url}
