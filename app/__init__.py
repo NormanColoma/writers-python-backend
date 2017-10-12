@@ -1,4 +1,5 @@
 from flask import Flask, g
+from flask_cors import CORS
 from pymongo import MongoClient
 
 from configuration.config import app_config
@@ -7,6 +8,7 @@ from routes.books import books_api
 
 def create_app(config_name):
     app = Flask(__name__)
+    CORS(app, resources={r"/books/*": {"origins": "*"}})
     app.config.from_object(app_config[config_name])
 
     def connect_db():
