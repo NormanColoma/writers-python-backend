@@ -1,8 +1,8 @@
 class Book:
-    __id: str = ""
-    __title: str = ""
-    __description: str = ""
-    __coverUrl: str = ""
+    __id: str
+    __title: str
+    __description: str
+    __coverUrl: str
 
     def __init__(self):
         pass
