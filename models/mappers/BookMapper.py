@@ -10,8 +10,14 @@ class BookMapper:
         model.title = entity['title']
         model.description = entity['description']
         model.cover_url = entity['coverUrl']
+        model.author_id = entity['author_id']
         return model
 
     @staticmethod
     def map_to_entity(model: Book):
-        return {'title': model.title, 'description': model.description, 'coverUrl': model.cover_url}
+        return {
+            'title': model.title,
+            'description': model.description,
+            'coverUrl': model.cover_url,
+            'author_id': model.author_id
+        }

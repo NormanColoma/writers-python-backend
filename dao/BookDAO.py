@@ -35,3 +35,10 @@ class BookDAO(IBookRepository):
         self.book_collection.delete_one({'_id': ObjectId(book_id)})
         return None
 
+    def get_books_by_author(self, author_id: str):
+        books_found = self.book_collection.find({'author_id': author_id})
+        books = list()
+        for book_entity in books_found:
+            book = BookMapper.map_to_model(book_entity)
+            books.append(book)
+        return books

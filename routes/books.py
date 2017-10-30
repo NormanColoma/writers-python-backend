@@ -15,6 +15,15 @@ def get_books():
     return response
 
 
+@books_api.route("/books/author/<author_id>")
+def get_books_by_author(author_id: str):
+    dao = BookDAO()
+    books = dao.get_books_by_author(author_id)
+    json_mapper = BookMapper()
+    response = json_mapper.to_json(books)
+    return response
+
+
 @books_api.route('/books/<book_id>')
 def search_book(book_id: str):
     dao = BookDAO()

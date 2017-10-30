@@ -15,3 +15,6 @@ class IBookRepository:
 
     @abstractmethod
     def remove_book(self, book_id: str): raise NotImplementedError
+
+    @abstractmethod
+    def get_books_by_author(self, author_id: str): raise NotImplementedError
