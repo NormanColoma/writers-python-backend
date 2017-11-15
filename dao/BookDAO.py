@@ -31,6 +31,13 @@ class BookDAO(IBookRepository):
         book_created = BookMapper.map_to_model(book_entity)
         return book_created
 
+    def update_book(self, book_id: str, book: Book):
+        book_entity = BookMapper.map_to_entity(book)
+        book_entity['_id'] = book_id
+        self.book_collection.save(book_entity)
+        saved_book = BookMapper.map_to_model(book_entity)
+        return saved_book
+
     def remove_book(self, book_id: str):
         self.book_collection.delete_one({'_id': ObjectId(book_id)})
         return None

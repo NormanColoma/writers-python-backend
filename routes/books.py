@@ -44,6 +44,17 @@ def add_book():
     return response
 
 
+@books_api.route('/books/<book_id>', methods=['PUT'])
+def update_book(book_id: str):
+    json_mapper = BookMapper()
+    book = json_mapper.to_object(request.get_json())
+    dao = BookDAO()
+    book_updated = dao.update_book(book_id, book)
+    response = json_mapper.to_json(book_updated)
+    response.status_code = 200
+    return response
+
+
 @books_api.route('/books/<book_id>', methods=['DELETE'])
 def remove_book(book_id: str):
     dao = BookDAO()
