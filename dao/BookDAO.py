@@ -33,7 +33,7 @@ class BookDAO(IBookRepository):
 
     def update_book(self, book_id: str, book: Book):
         book_entity = BookMapper.map_to_entity(book)
-        book_entity['_id'] = book_id
+        book_entity['_id'] = ObjectId(book_id)
         self.book_collection.save(book_entity)
         saved_book = BookMapper.map_to_model(book_entity)
         return saved_book
