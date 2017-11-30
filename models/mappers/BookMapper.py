@@ -11,6 +11,8 @@ class BookMapper:
         model.description = entity['description']
         model.cover_url = entity['coverUrl']
         model.author_id = entity['author_id']
+        model.updated = entity['updated']
+        model.created = entity['created']
         return model
 
     @staticmethod

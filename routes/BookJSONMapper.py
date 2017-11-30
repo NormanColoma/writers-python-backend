@@ -15,7 +15,8 @@ class BookMapper(JSONEncoder, JSONDecoder):
                     "title": o.title,
                     "description": o.description,
                     "coverUrl": o.cover_url,
-                    "author_id": o.author_id
+                    "author_id": o.author_id,
+                    "updated": o.updated
                 }
         except TypeError:
             pass

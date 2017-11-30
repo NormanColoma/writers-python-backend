@@ -4,6 +4,8 @@ class Book:
     __description: str
     __coverUrl: str
     __authorId: str
+    __created: int
+    __updated: int
 
     def __init__(self):
         pass
@@ -28,6 +30,14 @@ class Book:
     def author_id(self):
         return self.__authorId
 
+    @property
+    def created(self):
+        return self.__created
+
+    @property
+    def updated(self):
+        return self.__updated
+
     @id.setter
     def id(self, __id: str):
         self.__id = __id
@@ -41,9 +51,17 @@ class Book:
         self.__description = desc
 
     @cover_url.setter
-    def cover_url(self, cover_url):
+    def cover_url(self, cover_url: str):
         self.__coverUrl = cover_url
 
     @author_id.setter
-    def author_id(self, author_id):
+    def author_id(self, author_id: str):
         self.__authorId = author_id
+
+    @created.setter
+    def created(self, created: int):
+        self.__created = created
+
+    @updated.setter
+    def updated(self, updated: int):
+        self.__updated = updated
